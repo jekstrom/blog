@@ -1,0 +1,18 @@
+<div class="blog-post">
+    <div class="blog-post-title">Using the Spock framework to write this blog</div>
+    <p>
+        I am interested in learning Haskell, but had never used it for anything really <i>useful</i>. That's why I wrote this blog in Haskell, using the <a href="http://www.spock.li/">Spock framework</a>. I also took a great deal of inspiration from the <a href="https://github.com/agrafix/funblog">example blog project</a> for Spock.
+    </p>
+    <p>
+        I am pretty lazy, so I wanted this to be very simple and not take a long time. Most of my work with this blog was already done. I am using the <a href="http://getbootstrap.com/css/">twitter bootstrap css</a>, <a href="http://jaspervdj.be/blaze/">BlazeHTML</a> for HTML templates, and <a href="https://github.com/jgoerzen/hslogger/wiki">hslogger</a> for some simple logging.
+    </p>
+    <p>
+        The only logic I had to set up were the routes, and where to get the content. Instead of overcomplicate things with a database, I opted to leverage the filesystem and store raw HTML files. The root route simply gets the most recently modified file in a specific directory. There is additional logic in place to retrieve the directory contents of the posts directory to use as the archived list of posts. This is a little bit of <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">convention over configuration</a>. Of course this breaks if I ever need to modify a post in the past, but oh well; it's super simple, which I like. 
+    </p>
+    <p>
+        The other two routes: to get the about page and to view specific posts, simply read from the files directly. Of course, all of this happens in the IO monad. There are only a few pure functions currently, including templating/view functions. I will try to refactor stuff later; right now it works well enough for me.
+    </p>
+    <p>
+        It's pretty nice when your entire website's code can fit in 100 lines of code (including templating!). This site has no JavaScript, or fancy CSS, or websockets, or anything else to overcomplicate displaying text, and I hope to keep it that way.
+    </p>
+</div>
