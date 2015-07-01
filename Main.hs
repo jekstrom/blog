@@ -24,7 +24,7 @@ main = do
     h <- fileHandler "server.log" INFO >>= \lh -> return $ setFormatter lh (simpleLogFormatter "[$time : $loggername : $prio] $msg")
     updateGlobalLogger "blog.requests" (addHandler h)
     updateGlobalLogger "blog.requests" (setLevel INFO)
-    runSpock 8080 $ spockT id $ (appMiddleware >> appRoutes)
+    runSpock 80 $ spockT id $ (appMiddleware >> appRoutes)
 
 appMiddleware :: SpockT IO ()
 appMiddleware = middleware (staticPolicy (noDots >-> addBase "static"))
